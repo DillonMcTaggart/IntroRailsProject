@@ -1,38 +1,4 @@
-<% content_for(:html_title) { @movies.title}%>
+<% content_for(:html_title) { @movie.title}%>
 
-<h2 class="title is-2"><%= @movies.title %></h2>
 
-<p class='mb-5'><%= @movies.description %></p>
-
-<article class="message is-dark">
-  <div class="message-header">
-    <p>Description</p>
-  </div>
-  <div class = "message-body">
-    <%= @movies.description %>
-  </div>
-</article>
-
-<progress class="progress is-info" value="<%= @movies.average_vite %>" max=10>
-  <%= @movies.average_vite%>
-</progress>
-
-<p>
-  <strong>Rating: </strong>
-  <%= @movies.average_vite%>
-</p>
-
-<p>
-  <strong>Release Year: </strong>
-  <%= @movies.year %>
-</p>
-
-<p>
-<strong>Duration: </strong>
-<%= @movies.duration %> minutes
-</p>
-
-<p>
-  <strong>Production Company: </strong>
-  <%= link_to @movies.production_company.name, @movies.production_company%>
-</p>
+<%= render partial: 'movie', object: @movie, locals: {show_link: false }%>
