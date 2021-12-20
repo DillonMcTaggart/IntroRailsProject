@@ -1,0 +1,43 @@
+<h2 class="title is-2">
+<% if show_link %>
+  <%= link_to game.title, game %>
+<% else %>
+  <%= game.title %>
+<% end %>
+</h2>
+
+
+<article class="message is-dark">
+  <div class="message-header">
+    <p>Description</p>
+  </div>
+  <div class = "message-body">
+    <%= game.genre %>
+  </div>
+</article>
+
+<progress class="progress is-info" value="<%= game.sales %>" max=10>
+  <%= game.sales%>
+</progress>
+
+<p>
+  <strong>Global Sales: </strong>
+  <%= game.sales%>
+</p>
+
+<p>
+  <strong>Release Year: </strong>
+  <%= game.year %>
+</p>
+
+<p>
+<strong>Genre: </strong>
+<%= game.genre %>
+</p>
+
+<p>
+  <strong>Publisher: </strong>
+  <%= link_to game.publisher.name, game.publisher%>
+</p>
+
+<hr>

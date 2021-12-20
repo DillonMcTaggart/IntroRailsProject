@@ -6,5 +6,5 @@ This production company made <%= @production_company.movies.count %> of the top 
 
 <h3 class='title is-3'>Movies Made By <%= @production_company.name %></h3>
 <ul>
-  <%= render parial: @production_company.movies, locals: {show_link:true} %>
+  <%= render partial: @production_company.movies, locals: {show_link:true} %>
 </ul>

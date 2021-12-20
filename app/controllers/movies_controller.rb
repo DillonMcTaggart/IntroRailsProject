@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.includes(:production_company).all.order("average_vite DESC")
+    @movies = Movie.includes(:publisher).all.order("sales DESC")
   end
 
   def show

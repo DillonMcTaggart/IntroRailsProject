@@ -1,33 +1,33 @@
 require 'csv'
 
 Page.delete_all
-Movie.delete_all
-ProductionCompany.delete_all
+Game.delete_all
+Publisher.delete_all
 
-filename = Rails.root.join('db/top_movies.csv')
+filename = Rails.root.join('db/vgsales.csv')
 
-puts "Loading Movies from the CSV file: #{filename}"
+puts "Loading games from the CSV file: #{filename}"
 
 csv_data = File.read(filename)
-movies = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
+games = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
 
-movies.each do |m|
+games.each do |m|
   # puts m["original_title"]
-  production_company = ProductionCompany.find_or_create_by(name: m['production_company'])
+  publisher = publisher.find_or_create_by(name: m['Publisher'])
 
-  if production_company && production_company.valid?
-    movie = production_company.movies.create(
-      title: m['original_title'],
-      year: m['year'],
-      duration: m['duration'],
-      description: m['description'],
-      average_vite: m['avg_vote']
+  if publisher && publisher.valid?
+    game = publisher.games.create(
+      title: m['Name'],
+      year: m['Year'],
+      genre: m['Genre'],
+      sales: m['Global_Sales'],
+      rank: m['Rank']
     )
 
-    # movie && movie.valid?
-    puts "Invalid movie #{m['orginal_title']}" unless movie&.valid?
+    # game && game.valid?
+    puts "Invalid game #{m['orginal_title']}" unless game&.valid?
   else
-    puts "Invalid Production Comapny: #{m['production_company']} for movie: #{m['original_title']}"
+    puts "Invalid Production Comapny: #{m['publisher']} for game: #{m['Name']}"
   end
 end
 
@@ -44,4 +44,4 @@ Page.create(
 )
 
 puts "Created #{ProductionCompany.count} Production Companies"
-puts "Created #{Movie.count} movies"
+puts "Created #{game.count} games"

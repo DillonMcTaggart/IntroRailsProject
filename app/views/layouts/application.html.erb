@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:html_title) + " - " if content_for?(:html_title)%>Top 100 Movies</title>
+    <title><%= yield(:html_title) + " - " if content_for?(:html_title)%>Top 100 games</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,7 +15,7 @@
   <body>
     <section class= "section">
       <div class="container">
-      <h1 class="title is-1"><%= link_to 'Top Movies From IMDB', root_path %></h1>
+      <h1 class="title is-1"><%= link_to 'Top Games by global sales', root_path %></h1>
       </div>
       <%= yield %>
 

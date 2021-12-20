@@ -1,0 +1,4 @@
+<% content_for(:html_title) { @game.title}%>
+
+
+<%= render partial: 'game', object: @game, locals: {show_link: false }%>

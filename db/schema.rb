@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2021_12_10_020020) do
 
-  create_table "movies", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.string "title"
     t.integer "year"
-    t.integer "duration"
+    t.integer "rank"
     t.text "description"
-    t.string "average_vite"
+    t.string "sales"
     t.string "decimal"
-    t.integer "production_company_id", null: false
+    t.integer "publisher_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["production_company_id"], name: "index_movies_on_production_company_id"
+    t.index ["publisher_id"], name: "index_games_on_publisher_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -33,16 +33,16 @@ ActiveRecord::Schema.define(version: 2021_12_10_020020) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "production_companies", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "productions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "movies", "production_companies"
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "games", "publishers"
 end

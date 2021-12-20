@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @movies = Movie.includes(:production_company)
-                   .order('average_vite DESC')
-                   .limit(10)
+    @games = Game.includes(:publisher)
+                 .order('sales DESC')
+                 .limit(10)
 
-    @production_companies = ProductionCompany.ordered_by_movies.limit(10).limit(10)
+    @publishers = Publisher.ordered_by_games.limit(10).limit(10)
   end
 end
