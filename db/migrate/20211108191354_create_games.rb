@@ -4,7 +4,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :title
       t.integer :year
       t.integer :rank
-      t.text :description
+      t.text :genre
       t.string :sales
       t.string :decimal
       t.references :publisher, null: false, foreign_key: true

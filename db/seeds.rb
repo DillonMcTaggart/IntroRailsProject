@@ -13,19 +13,19 @@ games = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
 
 games.each do |m|
   # puts m["original_title"]
-  publisher = publisher.find_or_create_by(name: m['Publisher'])
+  publisher = Publisher.find_or_create_by(name: m['Publisher'])
 
   if publisher && publisher.valid?
     game = publisher.games.create(
       title: m['Name'],
       year: m['Year'],
+      rank: m['Rank'],
       genre: m['Genre'],
-      sales: m['Global_Sales'],
-      rank: m['Rank']
+      sales: m['Global_Sales']
     )
 
     # game && game.valid?
-    puts "Invalid game #{m['orginal_title']}" unless game&.valid?
+    puts "Invalid game #{m['Name']}" unless game&.valid?
   else
     puts "Invalid Production Comapny: #{m['publisher']} for game: #{m['Name']}"
   end
@@ -43,5 +43,5 @@ Page.create(
   permalink: 'about_the_data'
 )
 
-puts "Created #{ProductionCompany.count} Production Companies"
-puts "Created #{game.count} games"
+puts "Created #{Publisher.count} Production Companies"
+puts "Created #{games.count} games"

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_020020) do
     t.string "title"
     t.integer "year"
     t.integer "rank"
-    t.text "description"
+    t.text "genre"
     t.string "sales"
     t.string "decimal"
     t.integer "publisher_id", null: false
